@@ -10,7 +10,9 @@ echo "-----------------------------------"
 echo "Remove anything there, since we are loading new data…"
 echo ""
 
-rm *
+rm *.dat
+rm *.idn
+rm *.opt
 
 echo "-----------------------------------"
 echo "Use the 'tdbloader2' utility from Apache Jena to load our 'cts-template.ttl' file into a TDB Database…"
