@@ -29,7 +29,7 @@ echo "-----------------------------------"
 echo "Addding an html page of sample links to /var/www/html …"
 echo ""
 
-sudo cp Links.html /var/www/index.html
+sudo cp /vagrant/scripts/Links.html /var/www/index.html
 
 echo ""
 echo "Done."
