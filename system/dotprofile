@@ -1,6 +1,10 @@
 export PATH=/vagrant/morpheus/bin:/vagrant/scripts:$PATH
 export PATH=/usr/bin/apache-jena-3.1.0/bin:/usr/bin/apache-jena-fuseki-2.3.1/bin:$PATH
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+
 export EDITOR=/bin/nano
 export FUSEKI_BASE=/vagrant/cs2/fuseki/fusekibase
 export JENA_HOME=/usr/bin/jena
