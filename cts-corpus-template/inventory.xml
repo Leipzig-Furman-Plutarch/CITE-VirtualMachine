@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="schemas/cts/TextInventory.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<TextInventory tiid="hmt" tiversion="5.0.rc.1" xmlns="http://chs.harvard.edu/xmlns/cts"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <ctsnamespace abbr="hmtDemo" ns="http://chs.harvard.edu/ctsns/hmtDemo">
+    <description xml:lang="eng"> Namespace for demonstration texts. </description>
+  </ctsnamespace>
+
+
+
+  <textgroup urn="urn:cts:hmtDemo:goethe:">
+    <groupname xml:lang="eng">Johann Wolfgang von Goethe</groupname>
+    <work urn="urn:cts:hmtDemo:goethe.erlkoenig:" xml:lang="deu">
+      <title xml:lang="eng">Der Erlkönig</title>
+      
+      <edition urn="urn:cts:hmtDemo:goethe.erlkoenig.deu:">
+        <label xml:lang="eng">German (1782)</label>
+        <description xml:lang="eng">Used for the CTS Workshop. Digital Humanities, Krakow,
+          2016.</description>
+        <online/>
+      </edition>
+      
+      <translation urn="urn:cts:hmtDemo:goethe.erlkoenig.eng:" xml:lang="eng">
+        <label xml:lang="eng">English. Edgar A. Bowring, trans. (1853)</label>
+        <description xml:lang="eng">Used for the CTS Workshop. Digital Humanities, Krakow,
+          2016.</description>
+        <online/>
+      </translation>
+      
+      
+    </work>
+  </textgroup>
+
+  
+
+
+</TextInventory>

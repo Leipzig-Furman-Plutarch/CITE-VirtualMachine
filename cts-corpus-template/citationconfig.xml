@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="schemas/cts/CitationConfiguration.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<!-- On-line configuration for inventory in testinventory2.xml -->
+<CitationConfiguration xmlns="http://chs.harvard.edu/xmlns/hocuspocus">
+
+    <online urn="urn:cts:hmtDemo:goethe.erlkoenig.deu:" type="xml"
+        docname="erlkoenig-deu.xml">
+
+        <namespaceMapping abbreviation="tei" nsURI="http://www.tei-c.org/ns/1.0"/>
+        
+        <!-- **** Pick a Citation Scheme! **** -->
+        
+        <!-- Un-comment the <citationMapping> element below to cite this text by poetic line only. -->
+        <!-- (Then comment out the next <citationMapping> element. There can be only one.) -->
+        <citationMapping>
+            <citation label="Stanza" scope="/tei:TEI/tei:text/tei:body/tei:div" xpath="/tei:l[@n='?']"/>
+        </citationMapping>
+
+        <!-- Un-comment the <citationMapping> element below to cite this text by stanza and poetic line. -->
+        <!-- (Then comment out the previous <citationMapping> element. There can be only one.) -->
+        
+        <!--<citationMapping>
+            <citation label="Stanza" scope="/tei:TEI/tei:text/tei:body" xpath="/tei:div[@n='?']">
+                <citation label="line" scope="/tei:TEI/tei:text/tei:body/tei:div[@n='?']"
+                    xpath="/tei:l[@n='?']"/>
+            </citation>
+        </citationMapping>-->
+        
+        
+    </online>
+
+    <online urn="urn:cts:hmtDemo:goethe.erlkoenig.eng:" type="xml"
+        docname="erlkoenig-eng.xml">
+        
+        <namespaceMapping abbreviation="tei" nsURI="http://www.tei-c.org/ns/1.0"/>
+        
+        <!-- **** Pick a Citation Scheme! **** -->
+        
+        <!-- Un-comment the <citationMapping> element below to cite this text by poetic line only. -->
+        <!-- (Then comment out the next <citationMapping> element. There can be only one.) -->
+        <citationMapping>
+            <citation label="Stanza" scope="/tei:TEI/tei:text/tei:body/tei:div" xpath="/tei:l[@n='?']"/>
+        </citationMapping>
+        
+        <!-- Un-comment the <citationMapping> element below to cite this text by stanza and poetic line. -->
+        <!-- (Then comment out the previous <citationMapping> element. There can be only one.) -->
+        
+        <!--<citationMapping>
+            <citation label="Stanza" scope="/tei:TEI/tei:text/tei:body" xpath="/tei:div[@n='?']">
+                <citation label="line" scope="/tei:TEI/tei:text/tei:body/tei:div[@n='?']"
+                    xpath="/tei:l[@n='?']"/>
+            </citation>
+        </citationMapping>-->
+        
+       
+    </online>
+    
+   
+
+
+
+</CitationConfiguration>

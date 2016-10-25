@@ -19,6 +19,8 @@ To use this Virtual Machine, you need to install two pieces of software:
 - [VirtualBox](https://www.virtualbox.org)
 - [Vagrant](https://www.vagrantup.com)
 
+> **For Windows 10 users:** There is a known incompatibility between VirtualBox and Win10's networking. If you run into trouble, you might try downloading a recent [test build](https://www.virtualbox.org/wiki/Testbuilds) of VirtualBox.
+
 ## Initializing the Virtual Machine
 
 These instructions assume familarity with the command-line environment and the very basics of Unix/Linux.
@@ -41,7 +43,7 @@ These instructions assume familarity with the command-line environment and the v
 
 - When you are returned to the command-prompt, the Virtual Machine is ready and running. 
 
-- You can stop it with the command `vagrant halt`, from the `virtualmachine2016` directory.
+- You can stop it by navigating (on the command-line) to the `virtualmachine2016` directory and typing the command `vagrant halt`.
 
 ## Running: Using the Scripts
 
@@ -63,7 +65,7 @@ You should be able to run any of these scripts simply by typing their name and [
 
 > `0_Configure_CS2.sh`
 
-This script navigates to `/vagrant/cs2` and uses [Gradle](http://gradle.org) to configure the CITE Servlet application (cs2). This only needs to be done once.
+This script navigates to `/vagrant/cs2` and uses [Gradle](http://gradle.org) to configure the CITE Servlet application (cs2). This only needs to be done once. As part of the configuration process, the script will run the CITE Servlet's unit tests; they will all fail. This is normal, since you haven't loaded any data yet.
 
 ### 1. Build the Test Data with CITE-Manager
 

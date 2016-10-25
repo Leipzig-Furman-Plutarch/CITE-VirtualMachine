@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_drama.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_drama.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+	<teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title>Erlkönig</title>
+				<author>Johann Wolfgang von Goethe</author>
+				<editor role="translator">Edgar A. Bowring</editor>
+			</titleStmt>
+			<publicationStmt>
+				<p>Translation 1853. Public Domain Text. CC-0.</p>
+			</publicationStmt>
+			<sourceDesc>
+				<p>Used for the CTS Workshop. Digital Humanities, Krakow, 2016.</p>
+			</sourceDesc>
+		</fileDesc>
+	</teiHeader>
+	<text>
+		<body xml:lang="eng">
+			<div n="a">
+				<l n="1">Who rides there so late through the night dark and drear?</l>
+				<l n="2">The father it is, with his infant so dear;</l>
+				<l n="3">He holdeth the boy tightly clasp'd in his arm,</l>
+				<l n="4">He holdeth him safely, he keepeth him warm.</l>
+			</div>
+			<div n="b">
+				<l n="5">"My son, wherefore seek'st thou thy face thus to hide?"</l>
+				<l n="6">"Look, father, the Erl-King is close by our side!</l>
+				<l n="7">Dost see not the Erl-King, with crown and with train?"</l>
+				<l n="8">"My son, 'tis the mist rising over the plain."</l>
+			</div>
+			<div n="c">
+				<l n="9">"Oh, come, thou dear infant! oh come thou with me!</l>
+				<l n="10">Full many a game I will play there with thee;</l>
+				<l n="11">On my strand, lovely flowers their blossoms unfold,</l>
+				<l n="12">My mother shall grace thee with garments of gold."</l>
+			</div>
+			<div n="d">
+				<l n="13">"My father, my father, and dost thou not hear</l>
+				<l n="14">The words that the Erl-King now breathes in mine ear?"</l>
+				<l n="15">"Be calm, dearest child, 'tis thy fancy deceives;</l>
+				<l n="16">'Tis the sad wind that sighs through the withering leaves."</l>
+			</div>
+			<div n="e">
+				<l n="17">"Wilt go, then, dear infant, wilt go with me there?</l>
+				<l n="18">My daughters shall tend thee with sisterly care</l>
+				<l n="19">My daughters by night their glad festival keep,</l>
+				<l n="20">They'll dance thee, and rock thee, and sing thee to sleep."</l>
+			</div>
+			<div n="f">
+				<l n="21">"My father, my father, and dost thou not see,</l>
+				<l n="22">How the Erl-King his daughters has brought here for me?"</l>
+				<l n="23">"My darling, my darling, I see it aright,</l>
+				<l n="24">'Tis the aged grey willows deceiving thy sight."</l>
+			</div>
+			<div n="g">
+				<l n="25">"I love thee, I'm charm'd by thy beauty, dear boy!</l>
+				<l n="26">And if thou'rt unwilling, then force I'll employ."</l>
+				<l n="27">"My father, my father, he seizes me fast,</l>
+				<l n="28">Full sorely the Erl-King has hurt me at last."</l>
+			</div>
+			<div n="h">
+				<l n="29">The father now gallops, with terror half wild,</l>
+				<l n="30">He grasps in his arms the poor shuddering child;</l>
+				<l n="31">He reaches his courtyard with toil and with dread,--</l>
+				<l n="32">The child in his arms finds he motionless, dead.</l>
+			</div>
+
+		</body>
+	</text>
+</TEI>
