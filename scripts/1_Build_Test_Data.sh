@@ -1,17 +1,23 @@
 #!/usr/bin/env /bin/bash
 
 echo "-----------------------------------"
-echo "Navigate to the citemgr directory…"
+echo "Navigate to the cite-archive-manager directory…"
 echo ""
-echo "   cd /vagrant/citemgr"
+echo "   cd /vagrant/cite-archive-manager"
 echo ""
-cd /vagrant/citemgr
+cd /vagrant/cite-archive-manager
 echo "-----------------------------------"
 echo "Copy the configuration file for bulding the CTS Test Data here…"
 echo ""
 echo "   cp /vagrant/scripts/citemgr-cts-test.gradle ."
 echo ""
 cp /vagrant/scripts/citemgr-cts-test.gradle .
+echo "-----------------------------------"
+echo "Copy the test config file to 'conf.gradle'."
+echo ""
+echo "   cp citemgr-cts-test.gradle conf.gradle"
+echo ""
+cp citemgr-cts-test.gradle conf.gradle 
 echo "-----------------------------------"
 echo "Run the 'clean' task to prepare Gradle…"
 echo ""
@@ -23,15 +29,15 @@ echo "Run the CITE Manager 'ctsttl' task in Gradle to process the XML files, usi
 echo ""
 echo "The file 'citemgr-cts-test.gradle' directs CITE Manager to the proper TextInventory, CitationConfig, and directory containing XML texts."
 echo ""
-echo "   gradle -Pproj=citemgr-cts-test.gradle projects:ctsttl"
+echo "   gradle ctsttl"
 echo ""
-gradle -Pproj=citemgr-cts-test.gradle projects:ctsttl
+gradle ctsttl
 echo "-----------------------------------"
 echo "Copy the resulting file, 'corpus.tll', into 'vagrant/data/' as 'cts-test.ttl', for safekeeping."
 echo ""
 echo "   cp /vagrant/citemgr/projects/build/ttl/corpus.ttl /vagrant/data/cts-test.ttl"
 echo ""
-cp /vagrant/citemgr/projects/build/ttl/corpus.ttl /vagrant/data/cts-test.ttl
+cp /vagrant/cite-archive-manager/build/ttl/cts.ttl /vagrant/data/cts-test.ttl
 echo "-----------------------------------"
 echo "Move the TextInventory file cataloging this test data into place."
 echo ""
