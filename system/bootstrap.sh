@@ -97,6 +97,7 @@ git clone https://github.com/cite-architecture/citemgr.git
 git clone https://github.com/cite-architecture/cs2.git
 git clone https://github.com/cite-architecture/cite_test_ttl.git
 git clone https://github.com/Eumaeus/cts-demo-corpus.git
+git clone https://github.com/cite-architecture/cite-archive-manager
 
 #########################################################
 ### Set Up CITE Manager  ###########
