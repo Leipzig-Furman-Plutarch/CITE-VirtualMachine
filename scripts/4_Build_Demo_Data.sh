@@ -41,7 +41,7 @@ echo "    cp /vagrant/citemgr/projects/build/ttl/corpus.ttl /vagrant/data/cts-de
 echo ""
 cp /vagrant/cite-archive-manager/build/ttl/cts.ttl /vagrant/data/cts-demo.ttl
 cp /vagrant/cite-archive-manager/build/ttl/citeimgs.ttll /vagrant/data/cite-imgs.ttl
-cp /vagrant/cite-archive-manager/build/ttl/cts.ttl /vagrant/data/collections.ttl
+cp /vagrant/cite-archive-manager/build/ttl/collections.ttl /vagrant/data/collections.ttl
 echo "-----------------------------------"
 echo "Moving the TextInventory file cataloging this test data into place."
 echo ""
