@@ -27,7 +27,19 @@ echo ""
 /usr/bin/jena/bin/tdbloader2 --loc /vagrant/cs2/fuseki/fusekibase/databases/cts /vagrant/data/cts-all.ttl
 
 echo "-----------------------------------"
-echo "Done! The Demo CTS Corpus has been loaded."
+echo "Doing the same for CITE Collection data and CITE Image data."
 
+echo ""
+echo "-----------------------------------"
 
+cd /vagrant/cs2/fuseki/fusekibase/databases/cc
+rm *
+cat /vagrant/data/collections.ttl /vagrant/data/citeimgs.ttl > /vagrant/data/cc_plus_imgs.ttl
+/usr/bin/jena/bin/tdbloader2 --loc /vagrant/cs2/fuseki/fusekibase/databases/cc /vagrant/data/cc_plus_imgs.ttl
 
+cd /vagrant/cs2/fuseki/fusekibase/databases/img
+rm *
+/usr/bin/jena/bin/tdbloader2 --loc /vagrant/cs2/fuseki/fusekibase/databases/img /vagrant/data/cc_plus_imgs.ttl
+
+echo "-----------------------------------"
+echo "Done!"

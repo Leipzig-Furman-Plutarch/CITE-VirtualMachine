@@ -1,6 +1,6 @@
 # Leipzig-Furman Collaboration: virtualMachine2016
 
-A Vagrant virtual machine for running CITE/CTS services with data from the Leipzig-Furman collaboration. The VM runs Ubuntu-server/trusty, 64-bit version. This VM offers a testbed for the [Homer Multitext](http://homermultitext.org)'s implementation of CTS, which is a Java based servlet using an RDF database as a back-end.
+A Vagrant virtual machine for running CITE/CTS services for identification and retrieval of textual, image, and other data by means of machine-actional URN citations. The VM runs Ubuntu-server/trusty, 64-bit version. This VM offers a testbed for the [Homer Multitext](http://homermultitext.org)'s implementation of CTS, which is a Java based servlet using an RDF database as a back-end.
 
 There are other implementations of CTS, notably the [Capitains/Toolkit](https://libraries.io/github/Capitains/Toolkit) by Thibault Clérice of the University of Leipzig.  
 
