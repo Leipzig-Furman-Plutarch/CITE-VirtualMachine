@@ -33,7 +33,10 @@ sudo cp /vagrant/scripts/Links.html /var/www/index.html
 
 echo ""
 echo "Done."
+echo ""
+echo "-----------------------------------"
 echo "Access the page of sample links via your host computer at http://192.168.33.10/"
 
+echo "-----------------------------------"
 
 
