@@ -110,7 +110,7 @@ cp /vagrant/scripts/gradle.properties /home/vagrant/.gradle/
 ### Set Up CITE Manager  ###########
 #########################################################
 
-cd citemgr
+cd /vagrant/citemgr
 git pull
 cp ../scripts/cts-test.gradle .
 cp ../scripts/cts-demo.gradle .
