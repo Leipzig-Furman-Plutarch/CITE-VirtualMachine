@@ -178,7 +178,8 @@ The `virtualMachine2016` directory, where this `README.md` file is, is mapped in
 ### Contents of `/vagrant`
 
 - `scripts`. Scripts and configuration files for building a working CTS service with data. 
-- `citemgr`. A utility for processing XML files into tabular format and RDF.
+- `citemgr`. A [deprecated] utility for processing XML files into tabular format and RDF.
+- `cite-archive-manager`. A newer version of the utility for processing XML files into tabular format and RDF.
 - `cs2`. The servlet package that includes SparqlCTS, the Homermultitext's implementation of CTS.
 - `cite_test_ttl`. A corpus of data used for testing the functionality of SparqlCTS.
 - `cts-demo-corpus`. A corpus of texts in Greek, Latin, and English for introducing CTS.
