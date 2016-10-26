@@ -27,7 +27,7 @@ These instructions assume familarity with the command-line environment and the v
 
 - Download and install [VirtualBox](https://www.virtualbox.org) 
 
-- **Test VirtualBox by opening it on your machine.** Some Windows hardware require you manually to enable VT-x in the machine's firmware; see, for example [this page on the issue](http://www.howtogeek.com/213795/how-to-enable-intel-vt-x-in-your-computers-bios-or-uefi-firmware/). Every brand of hardware has its own method for doing this, and every inidivual model may be different. 
+- **Test VirtualBox by opening it on your machine.** Some Windows hardware require you manually to enable VT-x in the machine's firmware; see, for example [this page on the issue](http://www.howtogeek.com/213795/how-to-enable-intel-vt-x-in-your-computers-bios-or-uefi-firmware/). Every brand of hardware has its own method for doing this, and every individual model may be different. 
 
 - Download and install [Vagrant](https://www.vagrantup.com).
 
