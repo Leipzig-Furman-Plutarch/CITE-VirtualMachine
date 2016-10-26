@@ -100,17 +100,10 @@ git clone https://github.com/Eumaeus/cts-demo-corpus.git
 git clone https://github.com/cite-architecture/cite-archive-manager
 
 #########################################################
-### Disable Gradle Daemon  ###########
-#########################################################
-
-mkdir /home/vagrant/.gradle
-cp /vagrant/scripts/gradle.properties /home/vagrant/.gradle/
-
-#########################################################
 ### Set Up CITE Manager  ###########
 #########################################################
 
-cd citemgr
+cd /vagrant/citemgr
 git pull
 cp ../scripts/cts-test.gradle .
 cp ../scripts/cts-demo.gradle .
