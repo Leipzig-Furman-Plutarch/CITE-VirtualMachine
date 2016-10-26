@@ -129,9 +129,7 @@ Quit the server (back in the VM's command-line) with `control-c`.
 >
 > `http:localhost:9090/sparqlimg`
 
-#### Explore Further
-
-When your VM and the CITE/CTS services are running, you can explore some links by going (on your **host** computer) to http://192.168.33.10.
+After running this step, type control-c to quit the running server. Do the next step, some further Apache configuration, and then run `6_Run_SparqlCTS.sh` again to restart the CITE services.
 
 ### 7. Set up Apache2 for Fancy Tricks
 
@@ -165,6 +163,11 @@ You can also grab a text passage directly from the server at, *e.g.*:
 (Where `/gvr/` stands for `getValidReff`.)
 
 This might be useful for other applications drawing on CTS texts.
+
+#### Explore Further
+
+When your VM and the CITE/CTS services are running, you can explore some links by going (on your **host** computer) to http://192.168.33.10.
+
 
 ## General Instructions for the Virtual Machine
 
