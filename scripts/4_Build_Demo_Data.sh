@@ -1,35 +1,47 @@
 #!/usr/bin/env /bin/bash
 
 echo "-----------------------------------"
-echo "Navigating to the citemgr directory…"
+echo "Navigate to the citemgr directory…"
 echo ""
-
-cd /vagrant/citemgr
-
+echo "   cd /vagrant/cite-archive-manager"
+echo ""
+cd /vagrant/cite-archive-manager
 echo "-----------------------------------"
 echo "Copying the configuration file for bulding the CTS Test Data here…"
 echo ""
 
 cp /vagrant/scripts/citemgr-cts-demo.gradle .
+cp /vagrant/scripts/all-conf.gradle .
 
 echo "-----------------------------------"
-echo "Running the 'clean' task to prepare Gradle…"
+echo "Rename that file 'conf.gradle.'"
+echo ""
+echo "   cp citemgr-cts-demo.gradle conf.gradle"
+echo ""
+#cp citemgr-cts-demo.gradle conf.gradle
+cp all-conf.gradle conf.gradle
+echo "-----------------------------------"
+echo "Run the 'clean' task to prepare Gradle…"
+echo ""
+echo "   gradle clean"
 echo ""
 
 gradle clean
 
 echo "-----------------------------------"
-echo "Running the CITE Manager 'ctsttl' task in Gradle to process the XML files, using a TextInventory and Citaition Config file, into tabular representations of texts, and then into a single '.ttl' file expressing the corpus as RDF statement. This will take some time."
+echo "Run the CITE Manager 'ttl' task in Gradle to process the XML files, using a TextInventory and Citation Config file, into tabular representations of texts, and then into a single '.ttl' file expressing the corpus as RDF statement. This will take some time."
 echo ""
-
-gradle -Pproj=citemgr-cts-demo.gradle projects:ctsttl
-
+echo "   gradle ttl"
+echo ""
+gradle ttl
 echo "-----------------------------------"
-echo "Copying the resulting file, 'cts.tll', into 'vagrant/data/' as 'cts-demo.ttl', for safekeeping."
+echo "Copying the resulting files, 'cts.tll', 'collections.ttl', and 'images.ttl', into 'vagrant/data/' for safekeeping."
 echo ""
-
-cp /vagrant/citemgr/projects/build/ttl/cts.ttl /vagrant/data/cts-demo.ttl
-
+echo "    cp /vagrant/citemgr/projects/build/ttl/corpus.ttl /vagrant/data/cts-demo.ttl"
+echo ""
+cp /vagrant/cite-archive-manager/build/ttl/cts.ttl /vagrant/data/cts-demo.ttl
+cp /vagrant/cite-archive-manager/build/ttl/citeimgs.ttll /vagrant/data/cite-imgs.ttl
+cp /vagrant/cite-archive-manager/build/ttl/cts.ttl /vagrant/data/collections.ttl
 echo "-----------------------------------"
 echo "Moving the TextInventory file cataloging this test data into place."
 echo ""
