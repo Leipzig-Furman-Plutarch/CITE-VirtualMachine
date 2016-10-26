@@ -109,7 +109,7 @@ As above, with the test data, this processes a larger demonstration corpus with 
 
 As above, this loads the demo data into a database.
 
-### 6. Run SparqlCTS
+### 6. Run SparqlCTS, SparqlCC, and SparqlImg
 
 > `6_Run_SparqlCTS.sh`
 
@@ -128,6 +128,10 @@ Quit the server (back in the VM's command-line) with `control-c`.
 > and
 >
 > `http:localhost:9090/sparqlimg`
+
+#### Explore Further
+
+When your VM and the CITE/CTS services are running, you can explore some links by going (on your **host** computer) to http://192.168.33.10.
 
 ### 7. Set up Apache2 for Fancy Tricks
 
