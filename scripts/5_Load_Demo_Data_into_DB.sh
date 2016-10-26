@@ -42,4 +42,14 @@ rm *
 /usr/bin/jena/bin/tdbloader2 --loc /vagrant/cs2/fuseki/fusekibase/databases/img /vagrant/data/cc_plus_imgs.ttl
 
 echo "-----------------------------------"
+echo "Copying collection inventory into place"
+
+mkdir /vagrant/cs2/sparqlcc/src/main/webapp/invs
+cp /vagrant/cite_test_ttl/testsuite/collections/collections.xml /vagrant/cs2/sparqlcc/src/main/webapp/invs/inventory.xml
+
+
+
+
+
+echo "-----------------------------------"
 echo "Done!"
