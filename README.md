@@ -117,6 +117,8 @@ See if it all works, and explore CTS. Run the script. Once Gradle has started ev
 
 > `http:localhost:9090/sparqlcts`
 
+(**N.b.** Gradle, in the terminal, will report that the services are running at `http://localhost:8080`. But Vagrant maps port 8080 on the virtual machine to port 9090 in the host machine.)
+
 Quit the server (back in the VM's command-line) with `control-c`.
 
 > **As of October 2016** this also runs the CITE Collection service and CITE Image service. You can visit those at:
