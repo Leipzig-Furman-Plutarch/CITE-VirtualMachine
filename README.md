@@ -101,6 +101,8 @@ The test themselves are in these directories:
 
 As above, with the test data, this processes a larger demonstration corpus with CITE Manager. This will take many minutes.
 
+**As of October, 2016, this also builds demonstration data for CITE Collections and CITE Image Collections.**
+
 ### 5. Load the Demo Data into the Database with `tdbloader2`
 
 > `5_Load_Demo_Data_into_DB.sh`
@@ -116,6 +118,14 @@ See if it all works, and explore CTS. Run the script. Once Gradle has started ev
 > `http:localhost:9090/sparqlcts`
 
 Quit the server (back in the VM's command-line) with `control-c`.
+
+> **As of October 2016** this also runs the CITE Collection service and CITE Image service. You can visit those at:
+>
+> `http:localhost:9090/sparqlcc`
+>
+> and
+>
+> `http:localhost:9090/sparqlimg`
 
 ### 7. Set up Apache2 for Fancy Tricks
 
