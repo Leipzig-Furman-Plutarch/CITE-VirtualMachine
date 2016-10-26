@@ -1,4 +1,4 @@
-# Leipzig-Furman Collaboration: virtualMachine2016
+# Homer Multitext CITE/CTS: virtualMachine2016
 
 A Vagrant virtual machine for running CITE/CTS services for identification and retrieval of textual, image, and other data by means of machine-actional URN citations. The VM runs Ubuntu-server/trusty, 64-bit version. This VM offers a testbed for the [Homer Multitext](http://homermultitext.org)'s implementation of CTS, which is a Java based servlet using an RDF database as a back-end.
 
@@ -116,6 +116,8 @@ As above, this loads the demo data into a database.
 See if it all works, and explore CTS. Run the script. Once Gradle has started everything up, on the **host** computer, navigate a browser to:
 
 > `http:localhost:9090/sparqlcts`
+
+(**N.b.** Gradle, in the terminal, will report that the services are running at `http://localhost:8080`. But Vagrant maps port 8080 on the virtual machine to port 9090 in the host machine.)
 
 Quit the server (back in the VM's command-line) with `control-c`.
 
