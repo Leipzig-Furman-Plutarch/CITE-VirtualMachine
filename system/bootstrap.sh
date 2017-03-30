@@ -6,7 +6,6 @@
 add-apt-repository ppa:cwchien/gradle
 apt-get update
 
-
 #########################################################
 ### Install packages required for HMT editing ###########
 #########################################################
@@ -39,7 +38,6 @@ apt-get install -y nano
 
 
 
-
 # JDK bundle
 #apt-get install -y openjdk-7-jdk
 apt-get -y -q update
@@ -55,6 +53,12 @@ update-java-alternatives -s java-8-oracle
 apt-get -y install groovy
 apt-get -y install gradle
 
+# install SBT
+echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+sudo apt-get update
+sudo apt-get install sbt
+
 # Jena and Jena-Fuseki
 
 
@@ -63,19 +67,21 @@ echo " Downloading Apache Jena "
 echo "-------------------------------------"
 
 cd /usr/bin
-sudo curl http://apache.mirrors.pair.com/jena/binaries/apache-jena-3.1.0.tar.gz -o apache-jena-3.1.0.tar.gz
-sudo tar zxfv apache-jena-3.1.0.tar.gz
-sudo rm apache-jena-3.1.0.tar.gz
-sudo ln -s apache-jena-3.1.0 jena
+sudo curl http://mirror.olnevhost.net/pub/apache/jena/binaries/apache-jena-3.2.0.tar.gz -o apache-jena-3.1.0.tar.gz
+sudo tar zxfv apache-jena-3.2.0.tar.gz
+sudo rm apache-jena-3.2.0.tar.gz
+sudo ln -s apache-jena-3.2.0 jena
 
 echo "-------------------------------------"
 echo " Downloading Fuseki"
 echo "-------------------------------------"
 
-sudo curl http://apache.mirrors.pair.com/jena/binaries/apache-jena-fuseki-2.4.0.tar.gz -o apache-jena-fuseki-2.4.0.tar.gz
-sudo tar zxfv apache-jena-fuseki-2.4.0.tar.gz
-sudo rm apache-jena-fuseki-2.4.0.tar.gz
+sudo curl http://mirror.olnevhost.net/pub/apache/jena/binaries/apache-jena-fuseki-2.5.0.tar.gz -o apache-jena-fuseki-2.4.0.tar.gz
+sudo tar zxfv apache-jena-fuseki-2.5.0.tar.gz
+sudo rm apache-jena-fuseki-2.5.0.tar.gz
 
+# Tomcat
+sudo apt-get install tomcat7
 
 #########################################################
 ### Configure system and user settings        ###########
@@ -92,31 +98,26 @@ chown vagrant:vagrant /home/vagrant/.bashrc
 ### Clone/Pull/Update Some Repos  ###########
 #########################################################
 
-cd /vagrant
-git clone https://github.com/cite-architecture/citemgr.git
-git clone https://github.com/cite-architecture/cs2.git
-git clone https://github.com/cite-architecture/cite_test_ttl.git
-git clone https://github.com/Eumaeus/cts-demo-corpus.git
-git clone https://github.com/cite-architecture/cite-archive-manager
+# cd /vagrant
+# git clone https://github.com/cite-architecture/citemgr.git
+# git clone https://github.com/cite-architecture/cs2.git
+# git clone https://github.com/cite-architecture/cite_test_ttl.git
+# git clone https://github.com/Eumaeus/cts-demo-corpus.git
+# git clone https://github.com/cite-architecture/cite-archive-manager
 
 #########################################################
 ### Set Up CITE Manager  ###########
 #########################################################
 
-cd /vagrant/citemgr
-git pull
-cp ../scripts/cts-test.gradle .
-cp ../scripts/cts-demo.gradle .
+# cd /vagrant/citemgr
+# git pull
+# cp ../scripts/cts-test.gradle .
+# cp ../scripts/cts-demo.gradle .
 #gradle clean
 
 #########################################################
 ### Set Up CITE Servlet 2  ###########
 #########################################################
-
-cd /vagrant/cs2
-git pull
-cd /vagrant
-mkdir data
 
 # And let's get Apache2, so we can do some URL rewriting for CTS and CITE
 apt-get install -y apache2
