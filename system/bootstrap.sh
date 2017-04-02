@@ -43,13 +43,16 @@ apt-get install -y nano
 apt-get -y -q update
 apt-get -y -q upgrade
 apt-get -y -q install software-properties-common htop
-add-apt-repository ppa:webupd8team/java
+#add-apt-repository ppa:webupd8team/java
 apt-get -y -q update
-echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
-echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
-apt-get -y -q install oracle-java8-installer
-apt-get -y -q install oracle-java7-installer
-update-java-alternatives -s java-8-oracle
+sudo add-apt-repository -y ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get -y upgrade
+echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
+sudo apt-get -y install oracle-java8-installer
+echo "Setting environment variables for Java 8.."
+sudo apt-get install -y oracle-java8-set-default
 apt-get -y install groovy
 apt-get -y install gradle
 
@@ -67,7 +70,7 @@ echo " Downloading Apache Jena "
 echo "-------------------------------------"
 
 cd /usr/bin
-sudo curl http://mirror.olnevhost.net/pub/apache/jena/binaries/apache-jena-3.2.0.tar.gz -o apache-jena-3.1.0.tar.gz
+sudo curl http://mirror.olnevhost.net/pub/apache/jena/binaries/apache-jena-3.2.0.tar.gz -o apache-jena-3.2.0.tar.gz
 sudo tar zxfv apache-jena-3.2.0.tar.gz
 sudo rm apache-jena-3.2.0.tar.gz
 sudo ln -s apache-jena-3.2.0 jena
@@ -76,12 +79,18 @@ echo "-------------------------------------"
 echo " Downloading Fuseki"
 echo "-------------------------------------"
 
-sudo curl http://mirror.olnevhost.net/pub/apache/jena/binaries/apache-jena-fuseki-2.5.0.tar.gz -o apache-jena-fuseki-2.4.0.tar.gz
+sudo curl http://mirror.olnevhost.net/pub/apache/jena/binaries/apache-jena-fuseki-2.5.0.tar.gz -o apache-jena-fuseki-2.5.0.tar.gz
 sudo tar zxfv apache-jena-fuseki-2.5.0.tar.gz
 sudo rm apache-jena-fuseki-2.5.0.tar.gz
+sudo ln -s apache-jena-fuseki-2.5.0 fuseki
+
+echo "-------------------------------------"
+echo " Downloading Tomcat"
+echo "-------------------------------------"
 
 # Tomcat
-sudo apt-get install tomcat7
+sudo apt-get install -y tomcat7
+sudo cp /vagrant/system/tomcat7_default /etc/default/tomcat7
 
 #########################################################
 ### Configure system and user settings        ###########
@@ -90,9 +99,32 @@ sudo apt-get install tomcat7
 
 # Set up vagrant user account:
 cp /vagrant/system/dotprofile /home/vagrant/.profile
+cp /vagrant/system/vimrc /home/vagrant/.vimrc
 echo "source /vagrant/system/dotprofile" >> /home/vagrant/.bashrc
 chown vagrant:vagrant /home/vagrant/.profile
 chown vagrant:vagrant /home/vagrant/.bashrc
+
+#########################################################
+### Reassemble the massive TTL datafile, 
+### (split up for GitHub) 
+### And build database
+#########################################################
+
+cd /vagrant/fusekibase
+mkdir -p databases/cite
+cd /vagrant/Data/parts-all-ttl/
+cat * > ../all.ttl
+cd /usr/bin/jena/bin
+./tdbloader2 --loc /vagrant/fusekibase/databases/cite/ /vagrant/Data/all.ttl
+
+#########################################################
+### Set Fuseki to run on boot
+#########################################################
+
+sudo cp /vagrant/system/fuseki_initd /etc/init.d/fuseki
+sudo cp /vagrant/system/fuseki_default /etc/default/fuseki
+sudo update-rc.d fuseki start 3 4 5 . stop 0 1 2 6 .
+service fuseki start
 
 #########################################################
 ### Clone/Pull/Update Some Repos  ###########
@@ -125,3 +157,11 @@ a2enmod proxy
 a2enmod proxy_http
 a2enmod rewrite
 service apache2 restart
+sudo cp /vagrant/system/apache2-cite-proxy.conf /etc/apache2/sites-available/cite.conf
+sudo a2ensite cite.conf
+sudo apachectl restart
+
+# And let's move the cs2 servlet into place…
+cd /var/lib/tomcat7/webapps
+sudo cp /vagrant/Data/cs2.war .
+sudo service tomcat7 restart
