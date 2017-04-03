@@ -70,6 +70,8 @@ sudo curl http://mirror.olnevhost.net/pub/apache/jena/binaries/apache-jena-3.2.0
 sudo tar zxfv apache-jena-3.2.0.tar.gz
 sudo rm apache-jena-3.2.0.tar.gz
 sudo ln -s apache-jena-3.2.0 jena
+cd /vagrant/Data
+curl http://central.maven.org/maven2/org/apache/jena/jena-fuseki-war/2.5.0/jena-fuseki-war-2.5.0.war -0 fuseki.war
 
 echo "-------------------------------------"
 echo " Downloading Tomcat"
