@@ -35,6 +35,9 @@ apt-get install -y vim
 # an easy editor
 apt-get install -y nano
 
+# gzip, if it isn't already installed
+apt-get install -y gzip
+
 # JDK bundle
 #apt-get install -y openjdk-7-jdk
 apt-get -y -q update
@@ -71,7 +74,7 @@ sudo tar zxfv apache-jena-3.2.0.tar.gz
 sudo rm apache-jena-3.2.0.tar.gz
 sudo ln -s apache-jena-3.2.0 jena
 cd /vagrant/Data
-curl http://central.maven.org/maven2/org/apache/jena/jena-fuseki-war/2.5.0/jena-fuseki-war-2.5.0.war -0 fuseki.war
+curl http://central.maven.org/maven2/org/apache/jena/jena-fuseki-war/2.5.0/jena-fuseki-war-2.5.0.war -o fuseki.war
 
 echo "-------------------------------------"
 echo " Downloading Tomcat"
@@ -91,6 +94,7 @@ cp /vagrant/system/vimrc /home/vagrant/.vimrc
 echo "source /vagrant/system/dotprofile" >> /home/vagrant/.bashrc
 chown vagrant:vagrant /home/vagrant/.profile
 chown vagrant:vagrant /home/vagrant/.bashrc
+source /home/vagrant/.profile
 
 #########################################################
 ### Reassemble the massive TTL datafile,
@@ -104,11 +108,11 @@ cd /etc/fuseki
 mkdir -p databases/cite
 cp /vagrant/system/config.ttl .
 cd /vagrant/Data/parts-all-ttl/
-tar xzfv all-ttl-parts1.tgz
-tar xzfv all-ttl-parts2.tgz
+gunzip all-ttl-part1.gz
+gunzip all-ttl-part2.gz
 #rm all-ttl-parts1.tgz
 #rm all-ttl-parts2.tgz
-cat * > ../all.ttl
+cat all-ttl-part1 all-ttl-part2 > ../all.ttl
 cd /usr/bin/jena/bin
 ./tdbloader2 --loc /etc/fuseki/databases/cite/ /vagrant/Data/all.ttl
 
@@ -131,6 +135,7 @@ cd /vagrant/cite-archive-manager
 cp /vagrant/scripts/mgr_scripts/all-conf.gradle .
 cp /vagrant/scripts/mgr_scripts/all-mini-conf.gradle .
 cp /vagrant/scripts/mgr_scripts/all-smaller-conf.gradle .
+cp all-mini-conf.gradle conf.gradle
 gradle clean
 
 #########################################################
