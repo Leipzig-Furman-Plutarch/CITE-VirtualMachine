@@ -152,9 +152,11 @@ sudo cp /vagrant/system/apache2-cite-proxy.conf /etc/apache2/sites-available/cit
 sudo a2ensite cite.conf
 sudo apachectl restart
 # Move sampe links into place
-sudo cp /vagrant/scripts/Links.html /var/www/index.html
+sudo cp /vagrant/system/Links.html /var/www/
+sudo mv /var/www/Links.html /var/www/index.html
 # Move the single-page CITE Environment into place
-sudo cp /vagrant/CITE-App/downloads/cite-1.1.0.html / var/www/cite.html
+sudo cp /vagrant/CITE-App/downloads/cite-1.1.0.html /var/www/
+sudo mv /var/www/cite-1.1.0.html /var/www/cite.html
 
 # And let's move the cs2 and Fuseki servlets into place…
 cd /var/lib/tomcat7/webapps
