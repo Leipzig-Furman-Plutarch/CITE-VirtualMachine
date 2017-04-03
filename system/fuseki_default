@@ -1,4 +1,3 @@
-
 FUSEKI_BASE=/vagrant/fusekibase
 FUSEKI_HOME=/usr/bin/fuseki
 FUSEKI_CONF=/vagrant/fusekibase/config.ttl

@@ -35,9 +35,6 @@ apt-get install -y vim
 # an easy editor
 apt-get install -y nano
 
-
-
-
 # JDK bundle
 #apt-get install -y openjdk-7-jdk
 apt-get -y -q update
@@ -64,7 +61,6 @@ sudo apt-get install sbt
 
 # Jena and Jena-Fuseki
 
-
 echo "-------------------------------------"
 echo " Downloading Apache Jena "
 echo "-------------------------------------"
@@ -74,15 +70,6 @@ sudo curl http://mirror.olnevhost.net/pub/apache/jena/binaries/apache-jena-3.2.0
 sudo tar zxfv apache-jena-3.2.0.tar.gz
 sudo rm apache-jena-3.2.0.tar.gz
 sudo ln -s apache-jena-3.2.0 jena
-
-echo "-------------------------------------"
-echo " Downloading Fuseki"
-echo "-------------------------------------"
-
-sudo curl http://mirror.olnevhost.net/pub/apache/jena/binaries/apache-jena-fuseki-2.5.0.tar.gz -o apache-jena-fuseki-2.5.0.tar.gz
-sudo tar zxfv apache-jena-fuseki-2.5.0.tar.gz
-sudo rm apache-jena-fuseki-2.5.0.tar.gz
-sudo ln -s apache-jena-fuseki-2.5.0 fuseki
 
 echo "-------------------------------------"
 echo " Downloading Tomcat"
@@ -96,7 +83,6 @@ sudo cp /vagrant/system/tomcat7_default /etc/default/tomcat7
 ### Configure system and user settings        ###########
 #########################################################
 
-
 # Set up vagrant user account:
 cp /vagrant/system/dotprofile /home/vagrant/.profile
 cp /vagrant/system/vimrc /home/vagrant/.vimrc
@@ -105,47 +91,45 @@ chown vagrant:vagrant /home/vagrant/.profile
 chown vagrant:vagrant /home/vagrant/.bashrc
 
 #########################################################
-### Reassemble the massive TTL datafile, 
-### (split up for GitHub) 
+### Reassemble the massive TTL datafile,
+### (split up for GitHub)
 ### And build database
 #########################################################
 
-cd /vagrant/fusekibase
+mkdir -p /etc/fuseki
+chmod 777 /etc/fuseki
+cd /etc/fuseki
 mkdir -p databases/cite
+cp /vagrant/system/config.ttl .
 cd /vagrant/Data/parts-all-ttl/
+tar xzfv all-ttl-parts1.tgz
+tar xzfv all-ttl-parts2.tgz
+#rm all-ttl-parts1.tgz
+#rm all-ttl-parts2.tgz
 cat * > ../all.ttl
 cd /usr/bin/jena/bin
-./tdbloader2 --loc /vagrant/fusekibase/databases/cite/ /vagrant/Data/all.ttl
+./tdbloader2 --loc /etc/fuseki/databases/cite/ /vagrant/Data/all.ttl
 
-#########################################################
-### Set Fuseki to run on boot
-#########################################################
-
-sudo cp /vagrant/system/fuseki_initd /etc/init.d/fuseki
-sudo cp /vagrant/system/fuseki_default /etc/default/fuseki
-sudo update-rc.d fuseki start 3 4 5 . stop 0 1 2 6 .
-service fuseki start
 
 #########################################################
 ### Clone/Pull/Update Some Repos  ###########
 #########################################################
 
-# cd /vagrant
-# git clone https://github.com/cite-architecture/citemgr.git
-# git clone https://github.com/cite-architecture/cs2.git
-# git clone https://github.com/cite-architecture/cite_test_ttl.git
-# git clone https://github.com/Eumaeus/cts-demo-corpus.git
-# git clone https://github.com/cite-architecture/cite-archive-manager
+cd /vagrant
+git clone https://github.com/Eumaeus/cts-demo-corpus.git
+git clone https://github.com/cite-architecture/cite-archive-manager
+git clone https://github.com/cite-architecture/CITE-App.git
+git clone https://github.com/Eumaeus/croala-twiddle.git
 
 #########################################################
-### Set Up CITE Manager  ###########
+### Copy CITE Manager Configs  ###########
 #########################################################
 
-# cd /vagrant/citemgr
-# git pull
-# cp ../scripts/cts-test.gradle .
-# cp ../scripts/cts-demo.gradle .
-#gradle clean
+cd /vagrant/cite-archive-manager
+cp /vagrant/scripts/mgr_scripts/all-conf.gradle .
+cp /vagrant/scripts/mgr_scripts/all-mini-conf.gradle .
+cp /vagrant/scripts/mgr_scripts/all-smaller-conf.gradle .
+gradle clean
 
 #########################################################
 ### Set Up CITE Servlet 2  ###########
@@ -160,8 +144,29 @@ service apache2 restart
 sudo cp /vagrant/system/apache2-cite-proxy.conf /etc/apache2/sites-available/cite.conf
 sudo a2ensite cite.conf
 sudo apachectl restart
+# Move sampe links into place
+sudo cp /vagrant/scripts/Links.html /var/www/index.html
+# Move the single-page CITE Environment into place
+sudo cp /vagrant/CITE-App/downloads/cite-1.1.0.html / var/www/cite.html
 
-# And let's move the cs2 servlet into place…
+# And let's move the cs2 and Fuseki servlets into place…
 cd /var/lib/tomcat7/webapps
 sudo cp /vagrant/Data/cs2.war .
-sudo service tomcat7 restart
+sudo cp /vagrant/Data/fuseki.war .
+sudo service tomcat7 stop
+# shiro.ini controls access to Fuseki; this one gives everyone access to the management tools
+cp /vagrant/system/shiro.ini /etc/fuseki/shiro.ini
+chmod -R 777 /etc/fuseki
+sudo service tomcat7 start
+
+# Final clean up
+sudo apt-get -y autoremove
+
+echo "-----------------------------------"
+echo "The virtual machine is ready."
+echo ""
+echo "Do 'vagrant ssh' to log into it. Or…"
+echo "… just visit http:192.168.22.10/cs2 to work with the CITE Servlet."
+echo ""
+echo "Access the page of sample links via your host computer at http://192.168.33.10/"
+echo "-----------------------------------"
