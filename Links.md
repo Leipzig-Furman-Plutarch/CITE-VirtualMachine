@@ -36,7 +36,7 @@ These links assume the `cts-demo-corpus` texts (loaded by default into this Virt
 
 - Request: `GetPassagePlus`, parameter `stylesheet` = "cts_passage". Styled output for *Iliad* 1.1-1.10.
 
-> <http://192.168.33.10/cs2/texts?request=getpassageplus&stylesheet=cts_passage&urn=urn:cts:greeklit:tlg0012.tlg001.fuPers:1.1-1.10>
+> <http://192.168.33.10/cs2/texts?request=GetPassagePlus&stylesheet=cts_passage&urn=urn:cts:greeklit:tlg0012.tlg001.fuPers:1.1-1.10>
 
 > This implementation will look for stylesheets in `../cs2/sparqlct/src/main/webapp/cts-ui/xslt/`.
 
