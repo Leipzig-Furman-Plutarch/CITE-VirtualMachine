@@ -1,6 +1,6 @@
 #  A Tour of CITE/CTS
 
-**Leipzig-Furman Collaboration: virtualMachine2016**
+**Leipzig-Furman Collaboration: virtualMachine2017**
 
 ## CiteServlet2
 
