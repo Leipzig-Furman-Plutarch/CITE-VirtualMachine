@@ -2,6 +2,12 @@
 
 **Leipzig-Furman Collaboration: virtualMachine2017**
 
+## CITE-App
+
+A single-page application for browsing libraries in `.cex` format is online at: <http://192.168.33.10/cite.html>
+
+By default, it loads a sample `.cex` file with texts in Greek, Latin, English, Pesian, Arabic, and German. Other `.cex` libraries may be found at <https://github.com/cite-architecture/citedx>, which is checked out into this virtual machine at `/vagrant/citedx`.
+
 ## CiteServlet2
 
 **CiteServlet2** (**cs2**) is a JVM server application written in [Groovy](http://groovy-lang.org) and using [Apache Jena Fuseki](https://jena.apache.org/documentation/serving_data/) as a datastore. Text and collection data is encoded as RDF statements in `.ttl` format.
@@ -9,6 +15,12 @@
 These links assume the `cts-demo-corpus` texts (loaded by default into this Virtual Machine). This demonstration library consists of 22,000,000 RDF statements, serving a variety of texts and collections, as a demonstration of CITE.
 
 **Instructions for loading alternate datasets are in the file [“Using CS2 With Your Own Data”](/dev/null).**
+
+### CS2 Tour: Basics
+
+- [CS2 CTS Home](http://192.168.33.10/cs2/ctshome)
+- [CS2 CITE Collections Home](http://192.168.33.10/cs2/cchome)
+- [CS2 CITE Image Extension Home](http://192.168.33.10/cs2/imghome)
 
 ### CS2 Tour: Demo Corpus
 
@@ -70,3 +82,4 @@ This virtual machine, at configuration-time, loaded an apache2 configuration fil
 - Request: `GetValidReff`. Plain XML output from HTTP-URI, via URL rewriting. Valid citations for *Iliad* 1.
 
 > <http://192.168.33.10/cts/gvr/urn:cts:greekLit:tlg0012.tlg001.fuPers:1>
+
