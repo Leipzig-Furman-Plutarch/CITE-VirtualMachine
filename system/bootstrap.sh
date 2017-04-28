@@ -126,6 +126,8 @@ git clone https://github.com/Eumaeus/cts-demo-corpus.git
 git clone https://github.com/cite-architecture/cite-archive-manager
 git clone https://github.com/cite-architecture/CITE-App.git
 git clone https://github.com/Eumaeus/croala-twiddle.git
+git clone https://github.com/cite-architecture/citedx.git
+git clone https://github.com/cite-architecture/cex-maker.git
 
 #########################################################
 ### Copy CITE Manager Configs  ###########
@@ -137,6 +139,8 @@ cp /vagrant/scripts/mgr_scripts/all-mini-conf.gradle .
 cp /vagrant/scripts/mgr_scripts/all-smaller-conf.gradle .
 cp all-mini-conf.gradle conf.gradle
 gradle clean
+
+
 
 #########################################################
 ### Set Up CITE Servlet 2  ###########
@@ -151,12 +155,12 @@ service apache2 restart
 sudo cp /vagrant/system/apache2-cite-proxy.conf /etc/apache2/sites-available/cite.conf
 sudo a2ensite cite.conf
 sudo apachectl restart
-# Move sampe links into place
+# Move sample links into place
 sudo cp /vagrant/system/Links.html /var/www/
 sudo mv /var/www/Links.html /var/www/index.html
 # Move the single-page CITE Environment into place
-sudo cp /vagrant/CITE-App/downloads/cite-1.1.0.html /var/www/
-sudo mv /var/www/cite-1.1.0.html /var/www/cite.html
+sudo cp /vagrant/CITE-App/downloads/cite-1.2.1.html /var/www/
+sudo mv /var/www/cite-1.2.1.html /var/www/cite.html
 
 # And let's move the cs2 and Fuseki servlets into place…
 cd /var/lib/tomcat7/webapps
@@ -178,4 +182,5 @@ echo "Do 'vagrant ssh' to log into it. Or…"
 echo "… just visit http:192.168.22.10/cs2 to work with the CITE Servlet."
 echo ""
 echo "Access the page of sample links via your host computer at http://192.168.33.10/"
+echo "Access the single-page CITE App via your host computer at http://192.168.33.10/cite.html"
 echo "-----------------------------------"
