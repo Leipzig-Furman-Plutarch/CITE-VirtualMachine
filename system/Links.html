@@ -46,7 +46,7 @@ html,body,#wrapper{font-size:10pt!important}
 <li><a href="http://192.168.33.10/cs2/imghome">CS2 CITE Image Extension Home</a></li>
 </ul>
 
-<h3 id="cs2tour:democorpus">CS2 Tour: Demo Corpus</h3>
+<h3 id="cs2tour:demotextcorpus">CS2 Tour: Demo Text Corpus</h3>
 
 <ul>
 <li>Request: <code>GetCapabilities</code>. See the holdings of the CTS library. Unstyled XML.</li>
@@ -134,9 +134,11 @@ html,body,#wrapper{font-size:10pt!important}
 <p><a href="http://192.168.33.10/cs2/texts?request=GetValidReff&amp;stylesheet=cts_validreff&amp;level=2&amp;urn=urn:cts:greekLit:tlg0012.tlg001.fuPers:1.600-2.25">http://192.168.33.10/cs2/texts?request=GetValidReff&amp;stylesheet=cts_validreff&amp;level=2&amp;urn=urn:cts:greekLit:tlg0012.tlg001.fuPers:1.600-2.25</a></p>
 </blockquote>
 
-<h2 id="urlrewriting">URL Rewriting</h2>
+<h3 id="urlrewriting">URL Rewriting</h3>
 
 <p>This virtual machine, at configuration-time, loaded an apache2 configuration file (<code>/vagrant/system/apache2-cite-proxy.conf</code>) to do some URL-rewriting, as a demonstration. Setup for this is best seen by looking at <code>/vagrant/system/bootstrap.sh</code>.</p>
+
+<p><strong>Why do I care?</strong> This lets you create <code>HTTP-URI</code>s out of <code>CTS-URN</code>s. That is, URLs that combine a service&#8217;s <em>location</em> with an object&#8217;s <em>identifier</em>.</p>
 
 <ul>
 <li>Request: <code>GetPassage</code>. Plain XML output from HTTP-URI, via URL rewriting. <strong>Iliad</strong> 1.1&#8211;1.10.</li>
@@ -152,6 +154,50 @@ html,body,#wrapper{font-size:10pt!important}
 
 <blockquote>
 <p><a href="http://192.168.33.10/cts/gvr/urn:cts:greekLit:tlg0012.tlg001.fuPers:1">http://192.168.33.10/cts/gvr/urn:cts:greekLit:tlg0012.tlg001.fuPers:1</a></p>
+</blockquote>
+
+<h3 id="cs2tour:collectionsandimages">CS2 Tour: Collections and Images</h3>
+
+<p>For these, if you have followed along this far, you can remove the <code>&amp;stylesheet=…</code> part to see unstyled XML.</p>
+
+<ul>
+<li>CITE Collection: <code>GetCapabilities</code>. See what collections are available.</li>
+</ul>
+
+<blockquote>
+<p><a href="http://192.168.33.10/cs2/collections?request=GetCapabilities&amp;stylesheet=cite_capabilities&amp;inv=collections.xml">http://192.168.33.10/cs2/collections?request=GetCapabilities&amp;stylesheet=cite_capabilities&amp;inv=collections.xml</a></p>
+</blockquote>
+
+<ul>
+<li>CITE Image Extension: <code>GetExtendedCollections</code>. See which of the available Collections are exteded by CITE-Image.</li>
+</ul>
+
+<blockquote>
+<p><a href="http://192.168.33.10/cs2/images?request=GetExtendedCollections&amp;stylesheet=cite_collections">http://192.168.33.10/cs2/images?request=GetExtendedCollections&amp;stylesheet=cite_collections</a></p>
+</blockquote>
+
+<ul>
+<li>CITE Image Extension: <code>GetObjectPlus</code>. A request to the CITE Collection service for an object extended by CITE-Image.</li>
+</ul>
+
+<blockquote>
+<p><a href="http://192.168.33.10/cs2/collections?request=GetObjectPlus&amp;stylesheet=cite_getobject&amp;urn=urn:cite2:hmt:vaimg.v1:VA012RN_0013">http://192.168.33.10/cs2/collections?request=GetObjectPlus&amp;stylesheet=cite_getobject&amp;urn=urn:cite2:hmt:vaimg.v1:VA012RN_0013</a></p>
+</blockquote>
+
+<ul>
+<li>CITE Image Extension. The <strong>Image Citation Tool</strong>. Define URNs with Region-of-interest sub-references. Use the <code>See Selection</code> and <code>Selection in Context</code> links to see what happens with a URN+Subreference gets passed to the CITE Image Service.</li>
+</ul>
+
+<blockquote>
+<p><a href="http://192.168.33.10/cs2/ict.html?urn=urn:cite2:hmt:vaimg.v1:VA012RN_0013">http://192.168.33.10/cs2/ict.html?urn=urn:cite2:hmt:vaimg.v1:VA012RN_0013</a></p>
+</blockquote>
+
+<ul>
+<li>CITE Collection Service. See valid URNs for a Collection whose Objects share a property that is, itself, a URN to an Image Collection. Click on any of the listed objects to see how this integrated service handles these things.</li>
+</ul>
+
+<blockquote>
+<p><a href="http://192.168.33.10/cs2/collections?request=GetValidReff&amp;safemode=on&amp;stylesheet=cite_getvalidreff&amp;urn=urn:cite2:hmt:pageroi.v1:">http://192.168.33.10/cs2/collections?request=GetValidReff&amp;safemode=on&amp;stylesheet=cite_getvalidreff&amp;urn=urn:cite2:hmt:pageroi.v1:</a></p>
 </blockquote>
 <!-- ##END MARKED WRAPPER## -->
     </div>

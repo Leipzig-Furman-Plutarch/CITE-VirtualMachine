@@ -22,7 +22,8 @@ These links assume the `cts-demo-corpus` texts (loaded by default into this Virt
 - [CS2 CITE Collections Home](http://192.168.33.10/cs2/cchome)
 - [CS2 CITE Image Extension Home](http://192.168.33.10/cs2/imghome)
 
-### CS2 Tour: Demo Corpus
+
+### CS2 Tour: Demo Text Corpus
 
 - Request: `GetCapabilities`. See the holdings of the CTS library. Unstyled XML.
 
@@ -71,9 +72,11 @@ These links assume the `cts-demo-corpus` texts (loaded by default into this Virt
 
 > <http://192.168.33.10/cs2/texts?request=GetValidReff&stylesheet=cts_validreff&level=2&urn=urn:cts:greekLit:tlg0012.tlg001.fuPers:1.600-2.25>
 
-## URL Rewriting
+### URL Rewriting
 
 This virtual machine, at configuration-time, loaded an apache2 configuration file (`/vagrant/system/apache2-cite-proxy.conf`) to do some URL-rewriting, as a demonstration. Setup for this is best seen by looking at `/vagrant/system/bootstrap.sh`.
+
+**Why do I care?** This lets you create `HTTP-URI`s out of `CTS-URN`s. That is, URLs that combine a service's *location* with an object's *identifier*.
 
 - Request: `GetPassage`. Plain XML output from HTTP-URI, via URL rewriting. **Iliad** 1.1-1.10.
 
@@ -83,3 +86,26 @@ This virtual machine, at configuration-time, loaded an apache2 configuration fil
 
 > <http://192.168.33.10/cts/gvr/urn:cts:greekLit:tlg0012.tlg001.fuPers:1>
 
+### CS2 Tour: Collections and Images
+
+For these, if you have followed along this far, you can remove the `&stylesheet=…` part to see unstyled XML.
+
+- CITE Collection: `GetCapabilities`. See what collections are available.
+
+> <http://192.168.33.10/cs2/collections?request=GetCapabilities&stylesheet=cite_capabilities&inv=collections.xml>
+
+- CITE Image Extension: `GetExtendedCollections`. See which of the available Collections are exteded by CITE-Image.
+
+> <http://192.168.33.10/cs2/images?request=GetExtendedCollections&stylesheet=cite_collections>
+
+- CITE Image Extension: `GetObjectPlus`. A request to the CITE Collection service for an object extended by CITE-Image. 
+
+> <http://192.168.33.10/cs2/collections?request=GetObjectPlus&stylesheet=cite_getobject&urn=urn:cite2:hmt:vaimg.v1:VA012RN_0013>
+
+- CITE Image Extension. The **Image Citation Tool**. Define URNs with Region-of-interest sub-references. Use the `See Selection` and `Selection in Context` links to see what happens with a URN+Subreference gets passed to the CITE Image Service.
+
+> <http://192.168.33.10/cs2/ict.html?urn=urn:cite2:hmt:vaimg.v1:VA012RN_0013>
+
+- CITE Collection Service. See valid URNs for a Collection whose Objects share a property that is, itself, a URN to an Image Collection. Click on any of the listed objects to see how this integrated service handles these things.
+
+> <http://192.168.33.10/cs2/collections?request=GetValidReff&safemode=on&stylesheet=cite_getvalidreff&urn=urn:cite2:hmt:pageroi.v1:>
